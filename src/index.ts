@@ -14,3 +14,21 @@ app.use(function(req:Request, res:Response, next: NextFunction){
 app.listen(3000, function(){
     console.log("Server running on http://localhost:3000");
 });
+/* Browser Request
+      │
+      ▼
+Middleware 1
+console.log("A")
+      │
+      ▼
+next()
+      │
+      ▼
+Middleware 2
+console.log("B")
+      │
+      ▼
+next()
+      │
+      ▼
+No Route Handler */
