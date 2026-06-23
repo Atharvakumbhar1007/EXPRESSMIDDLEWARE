@@ -15,4 +15,4 @@ app.post("/product", [
     .trim()
     .notEmpty().withMessage("Product name is required")
     .isLength({min:4, max:150}).withMessage(("Name too Short"))
-])
+]);
