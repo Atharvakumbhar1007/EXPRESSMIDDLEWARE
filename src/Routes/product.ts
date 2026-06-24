@@ -1,4 +1,4 @@
-import express from "express";
+import { Router } from "express";
 import type { Request, Response } from "express";
 import { body, validationResult } from "express-validator";
 
@@ -9,10 +9,9 @@ export interface Product {
     inStock: boolean;
 }
 
-const app = express();
-app.use(express.json());
+const router = Router();
 
-app.post(
+router.post(
     "/product",
     [
         body("name")
@@ -55,11 +54,9 @@ app.post(
 
         return res.status(201).json({
             message: "Product created successfully",
-            user: {username: req.body.username, email:req.body.email}
+            product,
         });
     }
 );
 
-app.listen(3000, () => {
-    console.log("Server running on port 3000");
-});
+export default router;

@@ -1,0 +1,9 @@
+export interface Product {
+    name: string;
+    price: number;
+    category: string;
+    inStock: boolean;
+}
+declare const router: import("express-serve-static-core").Router;
+export default router;
+//# sourceMappingURL=product.d.ts.map
