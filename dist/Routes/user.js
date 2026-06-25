@@ -5,9 +5,14 @@ router.post("/product", [
     body("name")
         .trim()
         .notEmpty()
-        .withMessage("Product name is required")
+        .withMessage("User name is required")
         .isLength({ min: 4, max: 150 })
         .withMessage("Name must be between 4 and 150 characters"),
+    body("description")
+        .optional()
+        .trim()
+        .isLength({ max: 150 })
+        .withMessage("Description cannot greater then 150 charaters"),
     body("price")
         .notEmpty()
         .withMessage("Price is required")
@@ -25,6 +30,12 @@ router.post("/product", [
         .isBoolean()
         .withMessage("inStock must be true or false")
         .toBoolean(),
+    body("quantity")
+        .notEmpty()
+        .withMessage("Quantity is Required")
+        .isInt({ min: 0 })
+        .withMessage("Quantity cannot be negative")
+        .toInt(),
     body("manWebsite")
         .optional()
         .isLength({ min: 10 }).withMessage("Url too short")
@@ -36,11 +47,11 @@ router.post("/product", [
             errors: errors.array(),
         });
     }
-    const product = req.body;
+    const user = req.body;
     return res.status(201).json({
-        message: "Product created successfully",
-        product,
+        message: "user created successfully",
+        user,
     });
 });
 export default router;
-//# sourceMappingURL=product.js.map
+//# sourceMappingURL=user.js.map
