@@ -40,6 +40,11 @@ router.post(
             .isBoolean()
             .withMessage("inStock must be true or false")
             .toBoolean(),
+
+        body("manWebsite")
+            .optional()
+            .isLength({min:10}).withMessage("Url too short")
+            .isURL().withMessage("Invaild URL")
     ],
     (req: Request, res: Response) => {
         const errors = validationResult(req);
